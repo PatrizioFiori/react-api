@@ -14,12 +14,20 @@ const Posts = () => {
         console.log(JSON.stringify(posts, null, 2));
       })
       .catch(error => {
-        console.log("errore durante il caricamento", error);
+        console.log(error);
       })
   }
 
-  const handlerDeletePost = ((id) => {
+  const handlerDeletePost = (id => {
     console.log(id)
+    axios.delete(`${baseApiUrl}/posts/${id}`)
+      .then(res => {
+        fetchPosts()
+        //setPosts((prevPosts) => prevPosts.filter(post => post.id !== id))
+      })
+      .catch(error => {
+        console.log(error)
+      })
   })
 
   useEffect(() => {
