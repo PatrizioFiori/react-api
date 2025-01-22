@@ -48,21 +48,22 @@ const Posts = () => {
         console.log(error)
       })
   })
-
-  const handleAddPost = (e) => {
-    e.preventDefault();
-    const tagsArray = formData.tags.split(",").map(item => item.trim());
-    const newPost = { ...formData, tags: tagsArray };
-
-    axios.post(`${baseApiUrl}/posts`, newPost)
-      .then(res => {
-        setPosts(prevPosts => [...prevPosts, res.data]);
-        setFormData(initialFormData);
-      })
-      .catch(error => {
-        console.error("Errore durante l'invio del post:", error);
-      });
-  };
+  /*
+    const handleAddPost = (e) => {
+      e.preventDefault();
+      const tagsArray = formData.tags.split(",").map(item => item.trim());
+      const newPost = { ...formData, tags: tagsArray };
+  
+      axios.post(`${baseApiUrl}/posts`, newPost)
+        .then(res => {
+          setPosts(prevPosts => [...prevPosts, res.data]);
+          setFormData(initialFormData);
+        })
+        .catch(error => {
+          console.error("Errore durante l'invio del post:", error);
+        });
+    };
+    */
 
 
   useEffect(() => {
