@@ -17,7 +17,7 @@ const Posts = () => {
   const [formData, setFormData] = useState(initialFormData)
 
   const handlerInputChange = (e) => {
-    console.log(e.target)
+    //console.log(e.target)
     const { name, value } = e.target
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -30,7 +30,7 @@ const Posts = () => {
     axios.get(`${baseApiUrl}/posts`)
       .then(res => {
         setPosts(res.data)
-        console.log(JSON.stringify(posts, null, 2));
+        //console.log(JSON.stringify(posts, null, 2));
       })
       .catch(error => {
         console.log(error);
@@ -38,7 +38,7 @@ const Posts = () => {
   }
 
   const handlerDeletePost = (id => {
-    console.log(id)
+    //console.log(id)
     axios.delete(`${baseApiUrl}/posts/${id}`)
       .then(res => {
         fetchPosts()
@@ -50,11 +50,20 @@ const Posts = () => {
   })
 
   const handleAddPost = (e) => {
-    e.preventDefault()
-    console.log(e);
+    e.preventDefault();
+    const tagsArray = formData.tags.split(",").map(item => item.trim());
+    const newPost = { ...formData, tags: tagsArray };
 
+    axios.post(`${baseApiUrl}/posts`, newPost)
+      .then(res => {
+        setPosts(prevPosts => [...prevPosts, res.data]);
+        setFormData(initialFormData);
+      })
+      .catch(error => {
+        console.error("Errore durante l'invio del post:", error);
+      });
+  };
 
-  }
 
   useEffect(() => {
     fetchPosts()
@@ -129,7 +138,9 @@ const Posts = () => {
               />
             </div>
             <div className="mb-3">
-              <button className="btn btn-primary" type="submit" onClick={handleAddPost}>Pubblica nuovo post</button>
+              <button className="btn btn-primary" type="submit"
+              //onClick={handleAddPost}
+              >Pubblica nuovo post</button>
             </div>
           </div>
         </div>

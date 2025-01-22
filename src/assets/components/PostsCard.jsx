@@ -6,7 +6,6 @@ const PostsCard = (props) => {
 
             <div className="card">
                 <img src={`http://localhost:3000${image}`} alt={title} />
-                {console.log(image)}
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
                     <p className="card-text">
