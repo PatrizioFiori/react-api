@@ -7,10 +7,7 @@ import Posts from './assets/components/Posts'
 const App = () => {
   return (
     <div>
-      <Header />
-      <Main />
       <Posts />
-      <Footer />
     </div>
   )
 }

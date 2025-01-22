@@ -18,6 +18,10 @@ const Posts = () => {
       })
   }
 
+  const handlerDeletePost = ((id) => {
+    console.log(id)
+  })
+
   useEffect(() => {
     fetchPosts()
   }, [])
@@ -30,7 +34,7 @@ const Posts = () => {
       <div className="row bg-light">
         {posts.map(post => {
           return (
-            <PostsCard key={post.id} post={post} />
+            <PostsCard key={post.id} post={post} onDelete={() => handlerDeletePost(post.id)} />
           )
         })}
 
