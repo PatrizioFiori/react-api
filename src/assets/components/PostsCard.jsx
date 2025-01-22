@@ -19,7 +19,7 @@ const PostsCard = (props) => {
                         onClick={onDelete}>
                         <i class="fa-solid fa-trash"></i> Elimina
                     </div>
-                    <div className="mt-1 btn btn-info">
+                    <div className="mt-1 btn btn-primary">
                         <i class="fa-solid fa-pen-nib"></i> Modifica
                     </div>
 
